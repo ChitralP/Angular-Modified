@@ -6,16 +6,16 @@
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
-  <div fxFlex="40"  *ngIf="selectedDish">
+  <div fxFlex="40"  *ngIf="dish">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <h3>{{selectedDish.name | uppercase}}</h3>
+          <h3>{{dish.name | uppercase}}</h3>
         </mat-card-title>
       </mat-card-header>
-      <img mat-card-image src={{selectedDish.image}} alt={{selectedDish.name}}>
+      <img mat-card-image src={{dish.image}} alt={{dish.name}}>
       <mat-card-content>
-        <p>{{selectedDish.description}}
+        <p>{{dish.description}}
         </p>
       </mat-card-content>
       <mat-card-actions>
@@ -25,7 +25,7 @@
     </mat-card>
   </div>
 
-  <div fxFlex="40"  *ngIf="selectedDish">
+  <div fxFlex="40"  *ngIf="dish">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -38,36 +38,36 @@
             
             <p>
               <mat-list-item>
-                {{selectedDish.comments[0].comment}} <br/>
-                {{selectedDish.comments[0].rating}} Stars <br/>
-                -- {{selectedDish.comments[0].author}} {{selectedDish.comments[0].date | date}} <br/>
+                {{dish.comments[0].comment}} <br/>
+                {{dish.comments[0].rating}} Stars <br/>
+                -- {{dish.comments[0].author}} {{dish.comments[0].date | date}} <br/>
               </mat-list-item>
             </p> <br/>
 
             <p>
               <mat-list-item>
-                {{selectedDish.comments[1].comment}} <br/>
-                {{selectedDish.comments[1].rating}} Stars <br/>
-                -- {{selectedDish.comments[1].author}} {{selectedDish.comments[1].date | date}}
+                {{dish.comments[1].comment}} <br/>
+                {{dish.comments[1].rating}} Stars <br/>
+                -- {{dish.comments[1].author}} {{dish.comments[1].date | date}}
               </mat-list-item>
             </p> <br/>
             
             <p>
-            <mat-list-item>  {{selectedDish.comments[2].comment}} <br/>
-              {{selectedDish.comments[2].rating}} Stars <br/>
-              -- {{selectedDish.comments[2].author}} {{selectedDish.comments[2].date | date}} </mat-list-item>
+            <mat-list-item>  {{dish.comments[2].comment}} <br/>
+              {{dish.comments[2].rating}} Stars <br/>
+              -- {{dish.comments[2].author}} {{dish.comments[2].date | date}} </mat-list-item>
            </p> <br/> 
           
             <p>
-            <mat-list-item>  {{selectedDish.comments[3].comment}} <br/>
-              {{selectedDish.comments[3].rating}} Stars <br/>
-              -- {{selectedDish.comments[3].author}} {{selectedDish.comments[3].date | date}} </mat-list-item>
+            <mat-list-item>  {{dish.comments[3].comment}} <br/>
+              {{dish.comments[3].rating}} Stars <br/>
+              -- {{dish.comments[3].author}} {{dish.comments[3].date | date}} </mat-list-item>
             </p> <br/>
 
             <p>
-            <mat-list-item>  {{selectedDish.comments[4].comment}} <br/>
-              {{selectedDish.comments[4].rating}} Stars <br/>
-              -- {{selectedDish.comments[4].author}} {{selectedDish.comments[4].date | date}} </mat-list-item>
+            <mat-list-item>  {{dish.comments[4].comment}} <br/>
+              {{dish.comments[4].rating}} Stars <br/>
+              -- {{dish.comments[4].author}} {{dish.comments[4].date | date}} </mat-list-item>
             </p> <br/>
 
         </mat-list>
