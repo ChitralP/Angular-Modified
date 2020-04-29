@@ -38,14 +38,14 @@
         <mat-list>
             
             <p>
-              <mat-list-item>
-                {{dish.comments[0].comment}} <br/>
-                {{dish.comments[0].rating}} Stars <br/>
-                -- {{dish.comments[0].author}} {{dish.comments[0].date | date}} <br/>
+              <mat-list-item *ngFor = "let c of dish.comments">
+                {{c.comment}} <br/>
+                {{c.rating}} Stars <br/>
+                -- {{c.author}} {{c.date | date}} <br/>
               </mat-list-item>
             </p> <br/>
 
-            <p>
+            <!-- <p>
               <mat-list-item>
                 {{dish.comments[1].comment}} <br/>
                 {{dish.comments[1].rating}} Stars <br/>
@@ -69,7 +69,7 @@
             <mat-list-item>  {{dish.comments[4].comment}} <br/>
               {{dish.comments[4].rating}} Stars <br/>
               -- {{dish.comments[4].author}} {{dish.comments[4].date | date}} </mat-list-item>
-            </p> <br/>
+            </p> <br/> -->
 
         </mat-list>
         
