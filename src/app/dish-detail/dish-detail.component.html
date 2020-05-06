@@ -39,12 +39,12 @@
             
             <p>
 
-              <mat-list-item *ngFor = "let c of dish.comments" >
+              <mat-list-item style="margin-bottom:20px" *ngFor = "let c of dish.comments" >
                 {{c.comment}} <br/>
                 
                 {{c.rating}} Stars <br/>
                 
-                -- {{c.author}} {{c.date | date}} <br/>
+                -- {{c.author}} {{c.date | date}} 
                
               </mat-list-item> 
 
