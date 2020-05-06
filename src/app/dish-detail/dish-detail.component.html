@@ -6,8 +6,8 @@
     fxLayoutGap="10px" 
     fxLayoutGap.xs="0">
 
-  <div fxFlex="100">
-    <mat-card>
+  <div fxFlex="40">
+    <mat-card *ngIf = "dish" >
       <mat-card-header>
         <mat-card-title>
           <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
@@ -26,33 +26,23 @@
     </mat-card>
   </div>
 
-  <div fxFlex="100">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>
-          <h1> Comments </h1>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-      
-        <mat-list>
-            
-            <p>
+  
 
-              <mat-list-item style="margin-bottom:20px" *ngFor = "let c of dish.comments" >
-                {{c.comment}} <br/>
-                
-                {{c.rating}} Stars <br/>
-                
-                -- {{c.author}} {{c.date | date}} 
-               
-              </mat-list-item> 
-
-            </p> 
-            
-        </mat-list>
+  <div fxFlex="40">
+    <mat-list *ngIf = "dish">
+      <h3> Comments </h3>
+      <mat-list-item style="margin-bottom:20px" *ngFor = "let c of dish.comments" >
+        {{c.comment}} <br/>
         
-      </mat-card-content>
- </mat-card>
-    </div>
-</div>
+        {{c.rating}} Stars <br/>
+        
+        -- {{c.author}} {{c.date | date}} 
+       
+      </mat-list-item>
+    </mat-list>
+  </div>
+    
+  <div fxFlex [hidden]="dish">
+      <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+</div>  
