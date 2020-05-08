@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment'
+import { DISHES } from '../shared/dishes';
 
 
 @Component({
@@ -94,6 +95,9 @@ export class DishDetailComponent implements OnInit {
       author: '',
       date: ''
     })
+    this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
+    var id = +this.dishIds
+    DISHES[id].comments.push(this.comment)
     this.commentFormDirective.resetForm();
   }
 
