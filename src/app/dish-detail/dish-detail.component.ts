@@ -116,10 +116,6 @@ export class DishDetailComponent implements OnInit {
       }
     }
   }
-<<<<<<< HEAD
 }
   
 
-=======
-}
->>>>>>> fml
