@@ -43,7 +43,7 @@
        
       </mat-list-item>
 
-      <mat-list-item style="margin-bottom:20px" *ngIf = "commentForm.value.comment || commentForm.value.rating  || commentForm.value.author" >
+      <mat-list-item style="margin-bottom:20px" *ngIf = "commentForm.value.comment && commentForm.value.rating  && commentForm.value.author.length>1" >
         {{commentForm.value.comment}} <br/>
         
         {{commentForm.value.rating}} Stars <br/>
@@ -59,13 +59,9 @@
   </div>
 
   <div fxFlex fxFlexOffset="20px" class="form-size">
-    <p></p>
-    <p>
-      
-    </p>
 
-    <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
-      <p>
+   <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+        <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="author" placeholder="First Name" type="text" required>
           <mat-error *ngIf="formErrors.author">{{formErrors.author}}</mat-error>
@@ -73,7 +69,7 @@
         </p>
       <table class="form-size">
         <td>
-          <mat-slider thumbLabel tickInterval="1" min="1" max="5" step="1"  formControlName="rating">May we contact you?</mat-slider>
+          <mat-slider thumbLabel tickInterval="1" min="1" max="5" step="1"  formControlName="rating"></mat-slider>
         </td>
         </table>
       <p>

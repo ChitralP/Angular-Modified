@@ -78,7 +78,7 @@ export class DishDetailComponent implements OnInit {
       rating: ['', [Validators.required]], 
       comment:  ['', [Validators.required]],
       author: ['', [Validators.required, Validators.minLength(2)] ],
-      date: ['', [Validators.required]]
+      date: ['',]
     });
 
     this.commentForm.valueChanges
@@ -96,8 +96,12 @@ export class DishDetailComponent implements OnInit {
       author: '',
       date: ''
     })
-    this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
-    var id = +this.dishIds
+    var d = new Date();
+    var n = d.toISOString();
+    console.log(n)
+    this.comment.date = n
+    const id = this.route.snapshot.params.id
+    console.log(id)
     DISHES[id].comments.push(this.comment)
     this.commentFormDirective.resetForm();
   }
