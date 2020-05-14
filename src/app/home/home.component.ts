@@ -6,6 +6,7 @@ import { PromotionService } from '../services/promotion.service';
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
 import { flyInOut, expand } from '../animations/app.animation';
+import { SrvRecord } from 'dns';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,8 @@ export class HomeComponent implements OnInit {
 
   dish: Dish;
   dishErrMsg: string;
+  promotionErrMsg: string;
+  leaderErrMsg: string;
   promotion: Promotion;
   leader: Leader;
 
@@ -42,12 +45,14 @@ export class HomeComponent implements OnInit {
 
     // this.promotion = this.promotionservice.getFeaturedPromotion();
     this.promotionservice.getFeaturedPromotion()
-      .subscribe(promotion => this.promotion = promotion);
+      .subscribe(promotion => this.promotion = promotion,
+        errmess => this.promotionErrMsg = <any>errmess);
 
     // this.leader = this.leaderservice.getFeaturedLeader();
 
     this.leaderservice.getFeaturedLeader()
-      .subscribe(leader => this.leader = leader);
+      .subscribe(leader => this.leader = leader,
+        errmess => this.leaderErrMsg = <any>errmess);
   }
 
 }
