@@ -29,6 +29,17 @@ export class LeaderService {
   getLeaderIds(): Observable<number[] | any> {
     return this.getLeaders().pipe(map(leaders => leaders.map(leader => leader.id))).pipe(catchError(error => error));
   }
+
+  putLeader(Leader: Leader): Observable<Leader> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json'
+      })
+    };
+    return this.http.put<Leader>(baseURL + 'Leaders/' + Leader.id, Leader, httpOptions)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
+
+  }
 }  
 
 

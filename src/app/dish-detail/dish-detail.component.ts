@@ -7,7 +7,6 @@ import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment'
 import { DISHES } from '../shared/dishes'
-import { MatFormField } from '@angular/material'
 import { visibility, expand } from '../animations/app.animation';
 
 
@@ -109,7 +108,7 @@ export class DishDetailComponent implements OnInit {
     var d = new Date();
     var n = d.toISOString();
     console.log(n)
-    this.comment.date = n
+    this.comment.date = n 
     const id = this.route.snapshot.params.id
     console.log(id)
     DISHES[id].comments.push(this.comment)
