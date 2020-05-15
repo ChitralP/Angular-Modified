@@ -97,8 +97,7 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
-    FEEDBACKS.push(this.feedback)
-    this.feedbackservice.putFeedback(this.feedbackcopy)
+    this.feedbackservice.putFeedback(this.feedback)
       .subscribe(feedback => {
         this.feedback = feedback; this.feedbackcopy = feedback;
       },
