@@ -31,7 +31,8 @@ export class ContactComponent implements OnInit {
   visibility = 'shown';
   errMess: string;
   isSpinnerVisible = false;
-  isFeedbackVisible;
+  isFeedbackVisible=false;
+
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -108,12 +109,16 @@ export class ContactComponent implements OnInit {
     this.feedback = feedback;
     },
     errmess => { this.feedback = null; this.errMess = <any>errmess; });
-    
-    // setTimeout(() => {} , 5000)
     this.feedbackFormDirective.resetForm();
+    console.log(this.feedbackFormDirective)
+    // setTimeout(() => {} , 5000)
+    setTimeout(()=>{
+    console.log(this.feedbackFormDirective)
+    // console.log(this.isFeedbackVisible,this.isSpinnerVisible)
     this.isFeedbackVisible=true;
     this.isSpinnerVisible=false;
     setTimeout(()=>this.isFeedbackVisible=false,5000);
+    },4000)
   }
 
   onValueChanged(data?: any) {

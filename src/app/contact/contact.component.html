@@ -38,28 +38,27 @@
 
   <div fxFlex fxFlexOffset="20px" class="form-size" >
     <h3>Send us your Feedback</h3>
-    <p *ngIf = "isFeedbackVisible">
-      {{ feedbackForm.value | json }} {{ feedbackForm.status | json }}
+    <p *ngIf = "isFeedbackVisible" [@visibility]="visibility" [@expand]>
       <mat-list-item style="margin-bottom:20px" *ngIf = "feedback">      
         
-        First Name: {{feedback.firstname}} <br/>
+        <h5> First Name: {{feedback.firstname}} <br/> </h5>
         
-        Last Name: {{feedback.lastname}} <br/>
+        <h5>Last Name: {{feedback.lastname}} <br/></h5>
         
-        Tel. Number: {{feedback.telnum}} <br>
+        <h5>Tel. Number: {{feedback.telnum}} <br></h5>
   
-        Email: {{feedback.email}} <br/>
+        <h5>Email: {{feedback.email}} <br/></h5>
         
-        Contact You: {{feedback.agree}} <br/>
+        <h5>Contact You: {{feedback.agree}} <br/></h5>
         
-        How?: {{feedback.contacttype}} <br>
+        <h5>How?: {{feedback.contacttype}} <br></h5>
   
-        Feedback: {{feedback.message}}
+        <h5>Feedback: {{feedback.message}}</h5>
        
       </mat-list-item>
     </p>
     
-    <form  *ngIf = "!isFeedbackVisible && !isSpinnerVisible" novalidate  [formGroup] = "feedbackForm" #fform = "ngForm" (ngSubmit)="onSubmit()">
+    <form  *ngIf = "!isFeedbackVisible && !isSpinnerVisible" novalidate  [formGroup] = "feedbackForm" #fform = "ngForm" (ngSubmit)="onSubmit()" [@visibility]="visibility" [@expand] >
       <p>
         <mat-form-field class="half-width">
           <input matInput formControlName="firstname" placeholder="First Name" type="text" required>
