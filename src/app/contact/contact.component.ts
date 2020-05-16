@@ -30,7 +30,8 @@ export class ContactComponent implements OnInit {
   contactType = ContactType;
   visibility = 'shown';
   errMess: string;
-
+  isSpinnerVisible = false;
+  isFeedbackVisible;
   formErrors = {
     'firstname': '',
     'lastname': '',
@@ -65,6 +66,7 @@ export class ContactComponent implements OnInit {
     private feedbackservice: FeedbackService,
 ) {
     this.createForm();
+
   }
 
   ngOnInit() { }
@@ -87,6 +89,7 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isSpinnerVisible = true;
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
     this.feedbackForm.reset({
@@ -99,16 +102,18 @@ export class ContactComponent implements OnInit {
       message: ''
     });
 
+    
     this.feedbackservice.putFeedback(this.feedback)
-      .subscribe(feedback => {
-        this.feedback = feedback;
-      },
-      errmess => { this.feedback = null; this.errMess = <any>errmess; });
+    .subscribe(feedback => {
+    this.feedback = feedback;
+    },
+    errmess => { this.feedback = null; this.errMess = <any>errmess; });
     
-    // setTimeout(() => {
-    
-    // }, 5000)
+    // setTimeout(() => {} , 5000)
     this.feedbackFormDirective.resetForm();
+    this.isFeedbackVisible=true;
+    this.isSpinnerVisible=false;
+    setTimeout(()=>this.isFeedbackVisible=false,5000);
   }
 
   onValueChanged(data?: any) {

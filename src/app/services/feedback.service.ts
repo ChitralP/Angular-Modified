@@ -14,21 +14,6 @@ export class FeedbackService {
   constructor(private http: HttpClient,
     private processHTTPMsgService: ProcessHTTPMsgService) { }
 
-    getFeedbacks(): Observable<Feedback[]> {
-      return this.http.get<Feedback[]>(baseURL + 'Feedbackes')
-        .pipe(catchError(this.processHTTPMsgService.handleError));
-    }
-  
-    getFeedback(id: number): Observable<Feedback> {
-      return this.http.get<Feedback>(baseURL + 'Feedbackes/' + id)
-        .pipe(catchError(this.processHTTPMsgService.handleError));
-    }
-  
-    getFeaturedFeedback(): Observable<Feedback> {
-      return this.http.get<Feedback[]>(baseURL + 'Feedbackes?featured=true').pipe(map(Feedbacks => Feedbacks[0]))
-        .pipe(catchError(this.processHTTPMsgService.handleError));
-    }
-
     putFeedback(Feedback: Feedback): Observable<Feedback> {
       const httpOptions = {
         headers: new HttpHeaders({
