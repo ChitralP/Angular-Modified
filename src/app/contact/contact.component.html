@@ -81,5 +81,31 @@
       <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
     </form>
   </div>
+  <div>
+    <mat-list-item style="margin-bottom:20px" *ngIf = "feedback">      
+      First Name: {{feedback.firstname}} <br/>
+      
+      Last Name: {{feedback.lastname}} <br/>
+      
+      Tel. Number: {{feedback.telnum}} <br>
+
+      Email: {{feedback.email}} <br/>
+      
+      Contact You: {{feedback.agree}} <br/>
+      
+      How?: {{feedback.contacttype}} <br>
+
+      Feedback: {{feedback.message}}
+     
+    </mat-list-item>
+  </div>
+
+  <div fxFlex [hidden]="feedbackForm.status || errMess">
+    <mat-spinner></mat-spinner><h4>Submitting Form...</h4>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
+  </div>
 
 </div>

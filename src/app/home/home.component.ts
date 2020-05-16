@@ -6,7 +6,7 @@ import { PromotionService } from '../services/promotion.service';
 import { Leader } from '../shared/leader';
 import { LeaderService } from '../services/leader.service';
 import { flyInOut, expand } from '../animations/app.animation';
-import { SrvRecord } from 'dns';
+
 
 @Component({
   selector: 'app-home',

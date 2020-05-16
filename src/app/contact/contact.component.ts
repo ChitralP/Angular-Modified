@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, ContactType } from '../shared/feedback'
 import { flyInOut } from '../animations/app.animation';
-import { ActivatedRoute } from '@angular/router';
 import { FeedbackService } from '../services/feedback.service';
-import { FEEDBACKS } from '../shared/feedbacks';
+import { visibility, expand } from '../animations/app.animation';
+
 
 
 @Component({
@@ -16,7 +16,9 @@ import { FEEDBACKS } from '../shared/feedbacks';
     'style': 'display: block;'
     },
     animations: [
-      flyInOut()
+      flyInOut(),
+      visibility(),
+      expand()
     ]
 })
 
@@ -25,7 +27,6 @@ export class ContactComponent implements OnInit {
   @ViewChild('fform') feedbackFormDirective;
   feedbackForm: FormGroup;
   feedback: Feedback;
-  feedbackcopy : Feedback;
   contactType = ContactType;
   visibility = 'shown';
   errMess: string;
@@ -97,11 +98,16 @@ export class ContactComponent implements OnInit {
       contacttype: 'None',
       message: ''
     });
+
     this.feedbackservice.putFeedback(this.feedback)
       .subscribe(feedback => {
-        this.feedback = feedback; this.feedbackcopy = feedback;
+        this.feedback = feedback;
       },
-      errmess => { this.feedback = null; this.feedbackcopy = null; this.errMess = <any>errmess; });
+      errmess => { this.feedback = null; this.errMess = <any>errmess; });
+    
+    // setTimeout(() => {
+    
+    // }, 5000)
     this.feedbackFormDirective.resetForm();
   }
 
